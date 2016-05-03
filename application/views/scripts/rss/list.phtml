@@ -1,0 +1,50 @@
+<div class="container">
+<div class="row">
+
+	<div class="col-sm-3">
+		<h1>All Rss</h1>
+	</div>
+	<div class="col-sm-2">
+  </div>
+</div>
+<div class="table-responsive">
+			<table class="table">
+			<tr>
+        <th class="th">Site Name</th>
+				<th>Description</th>
+				<th>URL</th>
+				<th style="width:200px" width="200">Actions</th>
+			</tr>
+
+			<?php if($this->rss) {
+			for($i=0; $i<count($this->rss); $i++){?>
+				<tr id='row'>
+				<td><?php echo $this->rss[$i]['name']; ?></td>
+				<td><?php echo $this->rss[$i]['description']; ?></td>
+				<td><?php echo $this->rss[$i]['url']; ?></td>
+				<td>
+				<a href="delete/rssid/<?php echo $this->rss[$i]['id']; ?>"><i class="glyphicon glyphicon-remove"></i></a>
+				<a href="edit/rssid/<?php echo $this->rss[$i]['id']; ?>"><i class="glyphicon glyphicon-pencil"></i></a>
+				<a href="feed/rssid/<?php echo $this->rss[$i]['id']; ?>"><i class="glyphicon glyphicon-list-alt"></i></a>
+
+				</td>
+				 <?php
+				 	 if($this->user->id == $this->rss[$i]['user_id']){
+				 ?>
+				 <!-- <a href="edit/rssid/<?php echo $this->rss[$i]['id']; ?>" class="text-primary" onclick="editUser('.$user_id.')" id="edit'.$user_id.'"><i class="fa fa-pencil-square-o fa-3x"></i></a>
+				<a href="delete/rssid/<?php echo $this->rss[$i]['id']; ?>" class="text-danger" onclick="deleteUser('.$user_id.')" id="delete'.$user_id.'"><i class="fa fa-trash-o fa-3x"></i></a> -->
+
+<?php }else{
+	}?>
+
+<a href="view/rssid/<?php echo $this->rss[$i]['id']; ?>" class="text-success" onclick="deleteUser('.$user_id.')" id="delete'.$user_id.'"><i class="fa fa-eye fa-3x"></i></a>
+
+
+				</td>
+				</tr><?php
+					}
+}?>
+
+		</table>
+		</div>
+		</div>
